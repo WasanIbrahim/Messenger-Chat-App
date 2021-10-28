@@ -7,15 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E3E23DC272A856000993C6F /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8E3E23DB272A856000993C6F /* IQKeyboardManagerSwift */; };
 		8E862CE32729455A0074F48C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E862CE22729455A0074F48C /* AppDelegate.swift */; };
 		8E862CE52729455A0074F48C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E862CE42729455A0074F48C /* SceneDelegate.swift */; };
-		8E862CE72729455A0074F48C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E862CE62729455A0074F48C /* ViewController.swift */; };
+		8E862CE72729455A0074F48C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E862CE62729455A0074F48C /* LoginViewController.swift */; };
 		8E862CEA2729455A0074F48C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E862CE82729455A0074F48C /* Main.storyboard */; };
 		8E862CEC272945620074F48C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E862CEB272945620074F48C /* Assets.xcassets */; };
 		8E862CEF272945620074F48C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E862CED272945620074F48C /* LaunchScreen.storyboard */; };
 		8E862CFA272945630074F48C /* MessengerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E862CF9272945630074F48C /* MessengerTests.swift */; };
 		8E862D04272945630074F48C /* MessengerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E862D03272945630074F48C /* MessengerUITests.swift */; };
 		8E862D06272945630074F48C /* MessengerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E862D05272945630074F48C /* MessengerUITestsLaunchTests.swift */; };
+		8E862D192729693E0074F48C /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E862D182729693E0074F48C /* RegistrationViewController.swift */; };
+		8E862D1B27296B950074F48C /* NewConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E862D1A27296B950074F48C /* NewConversationViewController.swift */; };
+		8E862D1D27296BBE0074F48C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E862D1C27296BBE0074F48C /* ProfileViewController.swift */; };
+		8E862D1F27296BEA0074F48C /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E862D1E27296BEA0074F48C /* ConversationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +44,7 @@
 		8E862CDF2729455A0074F48C /* Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Messenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E862CE22729455A0074F48C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E862CE42729455A0074F48C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8E862CE62729455A0074F48C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8E862CE62729455A0074F48C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8E862CE92729455A0074F48C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8E862CEB272945620074F48C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8E862CEE272945620074F48C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +54,10 @@
 		8E862CFF272945630074F48C /* MessengerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MessengerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E862D03272945630074F48C /* MessengerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerUITests.swift; sourceTree = "<group>"; };
 		8E862D05272945630074F48C /* MessengerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8E862D182729693E0074F48C /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		8E862D1A27296B950074F48C /* NewConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationViewController.swift; sourceTree = "<group>"; };
+		8E862D1C27296BBE0074F48C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = Authentication/ProfileViewController.swift; sourceTree = "<group>"; };
+		8E862D1E27296BEA0074F48C /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E3E23DC272A856000993C6F /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,12 +109,10 @@
 		8E862CE12729455A0074F48C /* Messenger */ = {
 			isa = PBXGroup;
 			children = (
-				8E862CE22729455A0074F48C /* AppDelegate.swift */,
-				8E862CE42729455A0074F48C /* SceneDelegate.swift */,
-				8E862CE62729455A0074F48C /* ViewController.swift */,
-				8E862CE82729455A0074F48C /* Main.storyboard */,
-				8E862CEB272945620074F48C /* Assets.xcassets */,
-				8E862CED272945620074F48C /* LaunchScreen.storyboard */,
+				8E862D15272968480074F48C /* Resources */,
+				8E862D16272968640074F48C /* Controllers */,
+				8E862D14272968220074F48C /* StoryBoards */,
+				8E862D13272968160074F48C /* models */,
 				8E862CF0272945620074F48C /* Info.plist */,
 			);
 			path = Messenger;
@@ -127,6 +135,52 @@
 			path = MessengerUITests;
 			sourceTree = "<group>";
 		};
+		8E862D13272968160074F48C /* models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		8E862D14272968220074F48C /* StoryBoards */ = {
+			isa = PBXGroup;
+			children = (
+				8E862CE82729455A0074F48C /* Main.storyboard */,
+				8E862CED272945620074F48C /* LaunchScreen.storyboard */,
+				8E862CEB272945620074F48C /* Assets.xcassets */,
+			);
+			path = StoryBoards;
+			sourceTree = "<group>";
+		};
+		8E862D15272968480074F48C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8E862CE22729455A0074F48C /* AppDelegate.swift */,
+				8E862CE42729455A0074F48C /* SceneDelegate.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		8E862D16272968640074F48C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8E862D1C27296BBE0074F48C /* ProfileViewController.swift */,
+				8E862D1A27296B950074F48C /* NewConversationViewController.swift */,
+				8E862D1E27296BEA0074F48C /* ConversationViewController.swift */,
+				8E862D17272968C10074F48C /* Authentication */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		8E862D17272968C10074F48C /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				8E862CE62729455A0074F48C /* LoginViewController.swift */,
+				8E862D182729693E0074F48C /* RegistrationViewController.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,6 +197,9 @@
 			dependencies = (
 			);
 			name = Messenger;
+			packageProductDependencies = (
+				8E3E23DB272A856000993C6F /* IQKeyboardManagerSwift */,
+			);
 			productName = Messenger;
 			productReference = 8E862CDF2729455A0074F48C /* Messenger.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +272,9 @@
 				Base,
 			);
 			mainGroup = 8E862CD62729455A0074F48C;
+			packageReferences = (
+				8E3E23DA272A856000993C6F /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+			);
 			productRefGroup = 8E862CE02729455A0074F48C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -258,8 +318,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8E862CE72729455A0074F48C /* ViewController.swift in Sources */,
+				8E862D1F27296BEA0074F48C /* ConversationViewController.swift in Sources */,
+				8E862D1D27296BBE0074F48C /* ProfileViewController.swift in Sources */,
+				8E862CE72729455A0074F48C /* LoginViewController.swift in Sources */,
+				8E862D1B27296B950074F48C /* NewConversationViewController.swift in Sources */,
 				8E862CE32729455A0074F48C /* AppDelegate.swift in Sources */,
+				8E862D192729693E0074F48C /* RegistrationViewController.swift in Sources */,
 				8E862CE52729455A0074F48C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -624,6 +688,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8E3E23DA272A856000993C6F /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8E3E23DB272A856000993C6F /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8E3E23DA272A856000993C6F /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8E862CD72729455A0074F48C /* Project object */;
 }

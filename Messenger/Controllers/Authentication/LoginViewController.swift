@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginViewController: UIViewController {
     
@@ -28,6 +29,10 @@ class LoginViewController: UIViewController {
     
     // Actions
     @IBAction func LogInPressed(_ sender: Any) {
+        loginUser()
+        
+        
+        //go to profile VC
     }
     
     @IBAction func loginFacebookPressed(_ sender: Any) {
@@ -38,6 +43,26 @@ class LoginViewController: UIViewController {
         let registerVC = storyboard?.instantiateViewController(withIdentifier: "RegistrationViewController") as? RegistrationViewController
         self.navigationController?.pushViewController(registerVC!, animated: true)
         
+    }
+    
+    
+    
+    //new user logging in
+    func loginUser(){
+        //fail to login
+        Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: { authResult, error in
+        guard let result = authResult, error == nil else {
+            print("Failed to log in user with email \(self.emailTextField!)")
+            return
+        }
+            
+        // success login
+        let user = result.user
+        print("logged in user: \(user)")
+            let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController
+            self.navigationController?.pushViewController(nextVC!, animated: true)
+            
+    })
     }
     
 }

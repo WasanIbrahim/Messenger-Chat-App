@@ -14,6 +14,8 @@ protocol signDelegate: AnyObject {
 }
 
 import UIKit
+import Firebase
+
 
 class RegistrationViewController: UIViewController, UIImagePickerControllerDelegate , UINavigationControllerDelegate{
 
@@ -32,19 +34,22 @@ class RegistrationViewController: UIViewController, UIImagePickerControllerDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     //Actions
     @IBAction func registerButtonPressed(_ sender: Any) {
+        createUser()
     }
     
+    //set register image
     @IBAction func registerImagePressed(_ sender: Any) {
        let picker = UIImagePickerController()
         picker.allowsEditing = true
         picker.delegate = self
         present(picker, animated: true)
+        
     }
+    
     
     
     //set register image 
@@ -52,6 +57,41 @@ class RegistrationViewController: UIViewController, UIImagePickerControllerDeleg
         guard let image = info[.editedImage] as? UIImage else {return}
         registerImageButton.setBackgroundImage(image, for: .normal)
         dismiss(animated: true)
+        registerImageButton.layer.masksToBounds = true
+        registerImageButton.layer.cornerRadius = 30
+    }
+    
+    
+    //register new user
+    func createUser(){
+        Auth.auth().createUser(withEmail: registerEmailTextField.text!, password: registerPasswordTextField.text!, completion: { authResult , error  in
+            //throw error and show alert
+            guard let result = authResult, error == nil else {
+                self.showAlert(error: error!.localizedDescription)
+                print("Error creating user")
+                return
+            }
+            
+            //create new user and go to sign in page
+            let user = result.user
+            print("Created User: \(user)")
+            if let myVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController{
+                self.navigationController?.pushViewController(myVC, animated: true)
+            }
+            else{
+                self.showAlert(error: "Error")
+            }
+            
+        })
+    }
+    
+    
+    //alert for failur register
+    func showAlert(error: String){
+       let alertVC = UIAlertController(title: error, message: "Unable to create account", preferredStyle: UIAlertController.Style.alert)
+       let action  = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil)
+       alertVC.addAction(action)
+       self.present(alertVC, animated: true, completion: nil)
     }
     
     

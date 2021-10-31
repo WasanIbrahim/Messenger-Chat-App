@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E2AC8F6272E80DA00726007 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 8E2AC8F5272E80DA00726007 /* FirebaseAnalytics */; };
+		8E2AC8F8272E80DA00726007 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 8E2AC8F7272E80DA00726007 /* FirebaseAuth */; };
+		8E2AC8FA272E80DA00726007 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 8E2AC8F9272E80DA00726007 /* FirebaseDatabase */; };
+		8E2AC8FC272E80DA00726007 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 8E2AC8FB272E80DA00726007 /* FirebaseFirestore */; };
+		8E2AC8FE272E80DA00726007 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 8E2AC8FD272E80DA00726007 /* FirebaseStorage */; };
+		8E2AC901272E819000726007 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 8E2AC900272E819000726007 /* JGProgressHUD */; };
+		8E2AC904272E81C200726007 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 8E2AC903272E81C200726007 /* SDWebImage */; };
+		8E2AC906272E854800726007 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E2AC905272E854800726007 /* GoogleService-Info.plist */; };
 		8E3E23DC272A856000993C6F /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8E3E23DB272A856000993C6F /* IQKeyboardManagerSwift */; };
 		8E862CE32729455A0074F48C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E862CE22729455A0074F48C /* AppDelegate.swift */; };
 		8E862CE52729455A0074F48C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E862CE42729455A0074F48C /* SceneDelegate.swift */; };
@@ -41,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8E2AC905272E854800726007 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8E862CDF2729455A0074F48C /* Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Messenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E862CE22729455A0074F48C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E862CE42729455A0074F48C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,7 +74,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E2AC8F6272E80DA00726007 /* FirebaseAnalytics in Frameworks */,
+				8E2AC901272E819000726007 /* JGProgressHUD in Frameworks */,
+				8E2AC904272E81C200726007 /* SDWebImage in Frameworks */,
+				8E2AC8F8272E80DA00726007 /* FirebaseAuth in Frameworks */,
+				8E2AC8FA272E80DA00726007 /* FirebaseDatabase in Frameworks */,
+				8E2AC8FC272E80DA00726007 /* FirebaseFirestore in Frameworks */,
 				8E3E23DC272A856000993C6F /* IQKeyboardManagerSwift in Frameworks */,
+				8E2AC8FE272E80DA00726007 /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +125,7 @@
 		8E862CE12729455A0074F48C /* Messenger */ = {
 			isa = PBXGroup;
 			children = (
+				8E2AC905272E854800726007 /* GoogleService-Info.plist */,
 				8E862D15272968480074F48C /* Resources */,
 				8E862D16272968640074F48C /* Controllers */,
 				8E862D14272968220074F48C /* StoryBoards */,
@@ -199,6 +216,13 @@
 			name = Messenger;
 			packageProductDependencies = (
 				8E3E23DB272A856000993C6F /* IQKeyboardManagerSwift */,
+				8E2AC8F5272E80DA00726007 /* FirebaseAnalytics */,
+				8E2AC8F7272E80DA00726007 /* FirebaseAuth */,
+				8E2AC8F9272E80DA00726007 /* FirebaseDatabase */,
+				8E2AC8FB272E80DA00726007 /* FirebaseFirestore */,
+				8E2AC8FD272E80DA00726007 /* FirebaseStorage */,
+				8E2AC900272E819000726007 /* JGProgressHUD */,
+				8E2AC903272E81C200726007 /* SDWebImage */,
 			);
 			productName = Messenger;
 			productReference = 8E862CDF2729455A0074F48C /* Messenger.app */;
@@ -274,6 +298,9 @@
 			mainGroup = 8E862CD62729455A0074F48C;
 			packageReferences = (
 				8E3E23DA272A856000993C6F /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				8E2AC8F4272E80DA00726007 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				8E2AC8FF272E818F00726007 /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
+				8E2AC902272E81C100726007 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 8E862CE02729455A0074F48C /* Products */;
 			projectDirPath = "";
@@ -292,6 +319,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E862CEF272945620074F48C /* LaunchScreen.storyboard in Resources */,
+				8E2AC906272E854800726007 /* GoogleService-Info.plist in Resources */,
 				8E862CEC272945620074F48C /* Assets.xcassets in Resources */,
 				8E862CEA2729455A0074F48C /* Main.storyboard in Resources */,
 			);
@@ -690,6 +718,30 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		8E2AC8F4272E80DA00726007 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
+		8E2AC8FF272E818F00726007 /* XCRemoteSwiftPackageReference "JGProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JonasGessner/JGProgressHUD";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		8E2AC902272E81C100726007 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		8E3E23DA272A856000993C6F /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
@@ -701,6 +753,41 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		8E2AC8F5272E80DA00726007 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8E2AC8F4272E80DA00726007 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		8E2AC8F7272E80DA00726007 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8E2AC8F4272E80DA00726007 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		8E2AC8F9272E80DA00726007 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8E2AC8F4272E80DA00726007 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		8E2AC8FB272E80DA00726007 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8E2AC8F4272E80DA00726007 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		8E2AC8FD272E80DA00726007 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8E2AC8F4272E80DA00726007 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		8E2AC900272E819000726007 /* JGProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8E2AC8FF272E818F00726007 /* XCRemoteSwiftPackageReference "JGProgressHUD" */;
+			productName = JGProgressHUD;
+		};
+		8E2AC903272E81C200726007 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8E2AC902272E81C100726007 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
 		8E3E23DB272A856000993C6F /* IQKeyboardManagerSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8E3E23DA272A856000993C6F /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;

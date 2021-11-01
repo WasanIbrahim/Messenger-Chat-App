@@ -41,7 +41,7 @@ class RegistrationViewController: UIViewController, UIImagePickerControllerDeleg
         createUser()
     }
     
-    //set register image
+    //pick register image
     @IBAction func registerImagePressed(_ sender: Any) {
        let picker = UIImagePickerController()
         picker.allowsEditing = true
@@ -58,7 +58,8 @@ class RegistrationViewController: UIViewController, UIImagePickerControllerDeleg
         registerImageButton.setBackgroundImage(image, for: .normal)
         dismiss(animated: true)
         registerImageButton.layer.masksToBounds = true
-        registerImageButton.layer.cornerRadius = 30
+        registerImageButton.layer.cornerRadius = 45
+        registerImageButton.layer.cornerRadius = registerImageButton.frame.size.height/2
     }
     
     
@@ -72,11 +73,17 @@ class RegistrationViewController: UIViewController, UIImagePickerControllerDeleg
                 return
             }
             
+            
             //create new user and go to sign in page
             let user = result.user
             print("Created User: \(user)")
+            //store new user data in database
+            DatabaseManger.shared.creatingNewUserInDB(firstName: self.firstNameTextField.text!, lastName: self.lastNameTextField.text!, email: self.registerEmailTextField.text!)
+            
+            //success registration go to login VC
             if let myVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController{
                 self.navigationController?.pushViewController(myVC, animated: true)
+                
             }
             else{
                 self.showAlert(error: "Error")
@@ -96,3 +103,4 @@ class RegistrationViewController: UIViewController, UIImagePickerControllerDeleg
     
     
 }
+

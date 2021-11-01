@@ -15,6 +15,7 @@
 		8E2AC901272E819000726007 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 8E2AC900272E819000726007 /* JGProgressHUD */; };
 		8E2AC904272E81C200726007 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 8E2AC903272E81C200726007 /* SDWebImage */; };
 		8E2AC906272E854800726007 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E2AC905272E854800726007 /* GoogleService-Info.plist */; };
+		8E2AC9D1272FE6C400726007 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2AC9D0272FE6C400726007 /* DatabaseManager.swift */; };
 		8E3E23DC272A856000993C6F /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8E3E23DB272A856000993C6F /* IQKeyboardManagerSwift */; };
 		8E862CE32729455A0074F48C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E862CE22729455A0074F48C /* AppDelegate.swift */; };
 		8E862CE52729455A0074F48C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E862CE42729455A0074F48C /* SceneDelegate.swift */; };
@@ -50,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		8E2AC905272E854800726007 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8E2AC9D0272FE6C400726007 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		8E862CDF2729455A0074F48C /* Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Messenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E862CE22729455A0074F48C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E862CE42729455A0074F48C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 			children = (
 				8E862CE22729455A0074F48C /* AppDelegate.swift */,
 				8E862CE42729455A0074F48C /* SceneDelegate.swift */,
+				8E2AC9D0272FE6C400726007 /* DatabaseManager.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -181,9 +184,9 @@
 		8E862D16272968640074F48C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				8E862D1C27296BBE0074F48C /* ProfileViewController.swift */,
-				8E862D1A27296B950074F48C /* NewConversationViewController.swift */,
 				8E862D1E27296BEA0074F48C /* ConversationViewController.swift */,
+				8E862D1A27296B950074F48C /* NewConversationViewController.swift */,
+				8E862D1C27296BBE0074F48C /* ProfileViewController.swift */,
 				8E862D17272968C10074F48C /* Authentication */,
 			);
 			path = Controllers;
@@ -346,6 +349,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E2AC9D1272FE6C400726007 /* DatabaseManager.swift in Sources */,
 				8E862D1F27296BEA0074F48C /* ConversationViewController.swift in Sources */,
 				8E862D1D27296BBE0074F48C /* ProfileViewController.swift in Sources */,
 				8E862CE72729455A0074F48C /* LoginViewController.swift in Sources */,

@@ -13,9 +13,10 @@ protocol signDelegate: AnyObject {
     
 }
 
-import UIKit
-import Firebase
 
+import UIKit
+import FirebaseAuth
+import JGProgressHUD
 
 class RegistrationViewController: UIViewController, UIImagePickerControllerDelegate , UINavigationControllerDelegate{
 
@@ -27,6 +28,9 @@ class RegistrationViewController: UIViewController, UIImagePickerControllerDeleg
     @IBOutlet weak var registerPasswordTextField: UITextField!
     @IBOutlet weak var registerImageButton: UIButton!
     @IBOutlet weak var registerButton: UIButton!
+    
+    var selectProfilePic: UIImage!
+    
     
     
     weak var delegate: signDelegate?
@@ -55,6 +59,7 @@ class RegistrationViewController: UIViewController, UIImagePickerControllerDeleg
     //set register image 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[.editedImage] as? UIImage else {return}
+        self.selectProfilePic = image
         registerImageButton.setBackgroundImage(image, for: .normal)
         dismiss(animated: true)
         registerImageButton.layer.masksToBounds = true
@@ -63,44 +68,95 @@ class RegistrationViewController: UIViewController, UIImagePickerControllerDeleg
     }
     
     
+    
+    
     //register new user
     func createUser(){
-        Auth.auth().createUser(withEmail: registerEmailTextField.text!, password: registerPasswordTextField.text!, completion: { authResult , error  in
-            //throw error and show alert
-            guard let result = authResult, error == nil else {
-                self.showAlert(error: error!.localizedDescription)
-                print("Error creating user")
+//check if empty throw error
+        guard let firstName = firstNameTextField.text,
+            let lastName = lastNameTextField.text,
+            let email = registerEmailTextField.text,
+            let password = registerPasswordTextField.text,
+            !email.isEmpty,
+            !password.isEmpty,
+            !firstName.isEmpty,
+            !lastName.isEmpty,
+            password.count >= 6 else {
+                showAlert()
+                return
+        }
+        
+        
+        //spinner
+        
+//check if Email exist in firebase
+        DatabaseManager.shared.userExists(with: email, completion: { [weak self] exists in
+            guard let strongSelf = self else {
                 return
             }
             
             
-            //create new user and go to sign in page
-            let user = result.user
-            print("Created User: \(user)")
-            //store new user data in database
-            DatabaseManger.shared.creatingNewUserInDB(firstName: self.firstNameTextField.text!, lastName: self.lastNameTextField.text!, email: self.registerEmailTextField.text!)
+            //dispatch queue
             
-            //success registration go to login VC
-            if let myVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController{
-                self.navigationController?.pushViewController(myVC, animated: true)
+            //if user Exist throw Error
+            guard !exists else {
+                // user already exists
+                strongSelf.showAlert(message: "Looks like a user account for that email address already exists.")
+                return
+            }
+
+             Auth.auth().createUser(withEmail: email, password: password, completion: { authResult, error in
+                guard authResult != nil, error == nil else {
+                    print("Error creating user")
+                    return
+                }
+
+                UserDefaults.standard.setValue(email, forKey: "email")
+                UserDefaults.standard.setValue("\(firstName) \(lastName)", forKey: "name")
+
+
+                let chatUser = ChatAppUser(firstName: firstName,
+                                          lastName: lastName,
+                                           emailAddress: email)
                 
-            }
-            else{
-                self.showAlert(error: "Error")
-            }
-            
+                 
+                 DatabaseManager.shared.insertUser(with: chatUser, completion: { success in
+                
+                    if success {
+                        // upload image
+                        guard let image = strongSelf.selectProfilePic, let data = image.pngData() else {
+                                return
+                        }
+                        let filename = chatUser.profilePictureFileName
+                        StorageManager.shared.uploadProfilePicture(with: data, fileName: filename, completion: { result in
+                            switch result {
+                            case .success(let downloadUrl):
+                                UserDefaults.standard.set(downloadUrl, forKey: "profile_picture_url")
+                                print(downloadUrl)
+                            case .failure(let error):
+                                print("Storage maanger error: \(error)")
+                            }
+                        })
+                    }
+                })
+
+                strongSelf.navigationController?.dismiss(animated: true, completion: nil)
+            })
         })
     }
     
     
     //alert for failur register
-    func showAlert(error: String){
-       let alertVC = UIAlertController(title: error, message: "Unable to create account", preferredStyle: UIAlertController.Style.alert)
-       let action  = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil)
-       alertVC.addAction(action)
-       self.present(alertVC, animated: true, completion: nil)
+    func showAlert(message: String = "Please enter all information to create a new account."){
+        let alert = UIAlertController(title: "Woops",
+                                      message: message,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title:"Dismiss",
+                                      style: .cancel, handler: nil))
+        present(alert, animated: true)
     }
     
     
 }
+
 

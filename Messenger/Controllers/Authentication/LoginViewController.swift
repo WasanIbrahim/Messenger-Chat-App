@@ -8,8 +8,11 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import JGProgressHUD
 
 class LoginViewController: UIViewController {
+    
+    //private var spinner = JGProgressHUD(style: .dark)
     
 //variables
     @IBOutlet weak var WelcomeBackLabel: UILabel!
@@ -48,24 +51,41 @@ class LoginViewController: UIViewController {
     
     
     
+    
     //new user logging in
     func loginUser(){
-        //fail to login
-        FirebaseAuth.Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: { authResult, error in
-        guard let result = authResult, error == nil else {
-            print("Failed to log in user with email \(self.emailTextField!)")
-            return
-        }
+        //check not empty
+        //spinner.show(in: view)
+        Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: { [weak self] authResult, error in
+            guard let strongSelf = self else {
+                return
+            }
             
-        // success login , go to conversations VC
-        let user = result.user
-        print("logged in user: \(user)")
+            guard let result = authResult, error == nil else {
+                //fail to login
+                print("Failed to log in user ")
+                return
+            }
             
-            let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "ConversationViewController") 
-            self.navigationController?.pushViewController(nextVC!, animated: true)
+            // success login , go to conversations VC
             
-    })
+            let user = result.user
+            print(user.email)
+            
+            guard let email = user.email else{
+                return
+            }
+            
+            UserDefaults.standard.set(email, forKey: "email")
+            
+            print("logged in user: \(user)")
+            
+            
+            strongSelf.navigationController?.dismiss(animated: true, completion: nil)
+
+        })
     }
+    
     
     
     

@@ -52,8 +52,10 @@ class LoginViewController: UIViewController {
     
     
     
+    
     //new user logging in
     func loginUser(){
+        
         //check not empty
         //spinner.show(in: view)
         Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: { [weak self] authResult, error in
@@ -77,6 +79,7 @@ class LoginViewController: UIViewController {
             }
             
             UserDefaults.standard.set(email, forKey: "email")
+            //UserDefaults.standard.set("\(firstname)", forKey: "name")
             
             print("logged in user: \(user)")
             
@@ -90,4 +93,5 @@ class LoginViewController: UIViewController {
     
     
 }
+
 

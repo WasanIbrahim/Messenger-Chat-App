@@ -261,32 +261,33 @@ extension DatabaseManager {
                     }
         
                     let conversationId = "conversation_\(firstMessage.messageId)"
-        //
-        //
-        //
-        //            let recipient_newConversationData: [String: Any] = [
-        //                "id": conversationId,
-        //                "other_user_email": safeEmail,
-        //                "name": currentNamme,
-        //                "latest_message": [
-        //                    "date": dateString,
-        //                    "message": message,
-        //                    "is_read": false
-        //                ]
-        //            ]
-        //            // Update recipient conversaiton entry
-        //
-        //            self?.database.child("\(otherUserEmail)/conversations").observeSingleEvent(of: .value, with: { [weak self] snapshot in
-        //                if var conversatoins = snapshot.value as? [[String: Any]] {
-        //                    // append
-        //                    conversatoins.append(recipient_newConversationData)
-        //                    self?.database.child("\(otherUserEmail)/conversations").setValue(conversatoins)
-        //                }
-        //                else {
-        //                    // create
-        //                    self?.database.child("\(otherUserEmail)/conversations").setValue([recipient_newConversationData])
-        //                }
-        //            })
+        
+        
+        
+                    let recipient_newConversationData: [String: Any] = [
+                        "id": conversationId,
+                        "other_user_email": safeEmail,
+                        "name": currentNamme,
+                        "latest_message": [
+                            "date": dateString,
+                            "message": message,
+                            "is_read": false
+                        ]
+                    ]
+                    // Update recipient conversaiton entry
+        
+                    self?.database.child("\(otherUserEmail)/conversations").observeSingleEvent(of: .value, with: { [weak self] snapshot in
+                        if var conversatoins = snapshot.value as? [[String: Any]] {
+                            // append
+                            conversatoins.append(recipient_newConversationData)
+                            self?.database.child("\(otherUserEmail)/conversations").setValue(conversatoins)
+                        }
+                        else {
+                            // create
+                            self?.database.child("\(otherUserEmail)/conversations").setValue([recipient_newConversationData])
+                        }
+                    })
+                    
         
                     let newConversationData: [String: Any] = ["id": conversationId,
                                                               "other_user_email": otherUserEmail,
@@ -426,11 +427,83 @@ extension DatabaseManager {
 //
     /// Gets all mmessages for a given conversatino
     public func getAllMessagesForConversation(with id: String, completion: @escaping (Result<[Message], Error>) -> Void) {
-//        database.child("\(id)/messages").observe(.value, with: { snapshot in
-//            guard let value = snapshot.value as? [[String: Any]] else{
-//                completion(.failure(DatabaseError.failedToFetch))
-//                return}}
+        database.child("\(id)/messages").observe(.value, with: { snapshot in
+            guard let value = snapshot.value as? [[String: Any]] else{
+                completion(.failure(DatabaseError.failedToFetch))
+                return
             }
+
+            let messages: [Message] = value.compactMap({ dictionary in
+                guard let name = dictionary["name"] as? String,
+                    let isRead = dictionary["is_read"] as? Bool,
+                    let messageID = dictionary["id"] as? String,
+                    let content = dictionary["content"] as? String,
+                    let senderEmail = dictionary["sender_email"] as? String,
+                    let type = dictionary["type"] as? String,
+                    let dateString = dictionary["date"] as? String,
+                    let date = ChatViewController.dateFormatter.date(from: dateString)else {
+                        return nil
+                }
+//                var kind: MessageKind?
+//                if type == "photo" {
+//                    // photo
+//                    guard let imageUrl = URL(string: content),
+//                    let placeHolder = UIImage(systemName: "plus") else {
+//                        return nil
+//                    }
+//                    let media = Media(url: imageUrl,
+//                                      image: nil,
+//                                      placeholderImage: placeHolder,
+//                                      size: CGSize(width: 300, height: 300))
+//                    kind = .photo(media)
+//                }
+//                else if type == "video" {
+//                    // photo
+//                    guard let videoUrl = URL(string: content),
+//                        let placeHolder = UIImage(named: "video_placeholder") else {
+//                            return nil
+//                    }
+//
+//                    let media = Media(url: videoUrl,
+//                                      image: nil,
+//                                      placeholderImage: placeHolder,
+//                                      size: CGSize(width: 300, height: 300))
+//                    kind = .video(media)
+//                }
+//                else if type == "location" {
+//                    let locationComponents = content.components(separatedBy: ",")
+//                    guard let longitude = Double(locationComponents[0]),
+//                        let latitude = Double(locationComponents[1]) else {
+//                        return nil
+//                    }
+//                    print("Rendering location; long=\(longitude) | lat=\(latitude)")
+//                    let location = Location(location: CLLocation(latitude: latitude, longitude: longitude),
+//                                            size: CGSize(width: 300, height: 300))
+//                    kind = .location(location)
+//                }
+//                else {
+//                    kind = .text(content)
+//                }
+//
+//                guard let finalKind = kind else {
+//                    return nil
+//                }
+//
+                let sender = Sender(photoURL: "",
+                                    senderId: senderEmail,
+                                    displayName: name)
+//
+                return Message(sender: sender,
+                               messageId: messageID,
+                               sentDate: date,
+                               kind: .text(content))
+            })
+//
+            completion(.success(messages))
+        })
+    }
+
+        
     /// Sends a message with target conversation and message
     public func sendMessage(to conversation: String, otherUserEmail: String, mmessage: Message, completion: @escaping (Bool) -> Void) {
         //حذفت name: String, من التعريف

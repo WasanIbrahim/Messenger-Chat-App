@@ -62,9 +62,15 @@ class RegistrationViewController: UIViewController, UIImagePickerControllerDeleg
         self.selectProfilePic = image
         registerImageButton.setBackgroundImage(image, for: .normal)
         dismiss(animated: true)
-        registerImageButton.layer.masksToBounds = true
-        registerImageButton.layer.cornerRadius = 45
-        registerImageButton.layer.cornerRadius = registerImageButton.frame.size.height/2
+//        registerImageButton.layer.masksToBounds = true
+//        registerImageButton.layer.cornerRadius = 45
+//        registerImageButton.layer.cornerRadius = registerImageButton.frame.size.height/2
+        
+        registerImageButton.layer.cornerRadius = 6
+        registerImageButton.layer.borderWidth = 2
+        registerImageButton.layer.borderColor = UIColor.black.cgColor
+        
+        
     }
     
     

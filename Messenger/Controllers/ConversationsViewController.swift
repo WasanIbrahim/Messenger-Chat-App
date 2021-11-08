@@ -22,12 +22,12 @@ class ConversationsViewController: UIViewController , UITableViewDelegate , UITa
     override func viewDidLoad() {
             super.viewDidLoad()
         
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier:"ConversationTableViewCell")
+        //tableView.register(UITableViewCell.self, forCellReuseIdentifier:"ConversationTableViewCell")
 
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        startListeningForCOnversations()
+        
 
         }
     //actions
@@ -82,7 +82,7 @@ class ConversationsViewController: UIViewController , UITableViewDelegate , UITa
             return
         }
         
-        let vc = ChatViewController(with: email)
+        let vc = ChatViewController(with: email, id: nil)
         vc.isNewConversation = true
                 vc.title = name
                 vc.navigationItem.largeTitleDisplayMode = .never
@@ -126,7 +126,7 @@ class ConversationsViewController: UIViewController , UITableViewDelegate , UITa
         tableView.deselectRow(at: indexPath, animated: true)
         let model = conversations[indexPath.row]
 
-        let vc = ChatViewController(with: model.otherUserEmail)
+        let vc = ChatViewController(with: model.otherUserEmail, id: model.id)
         vc.title = model.name
                 vc.navigationItem.largeTitleDisplayMode = .never
                 navigationController?.pushViewController(vc, animated: true)
@@ -138,6 +138,7 @@ class ConversationsViewController: UIViewController , UITableViewDelegate , UITa
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         validateAuth()
+        startListeningForCOnversations()
    
     }
     
